@@ -5,11 +5,11 @@
 	<h2 align="center">发布新的 视频/图片</h2><br><br>
 	<form method='POST' action="{% url '发布页面' %}" align="center" enctype="multipart/form-data">
 		{% csrf_token %}
-		视频/图片 名称：<input type="text" name="名称"><br><br>
-		介绍：<textarea cols=100 rows=10 name='介绍'></textarea> <br><br>
-		链接：<input type="text" name="链接"><br><br>
+		视频/图片 名称：<input value='无标题' type="text" name="标题"><br><br>
+		介绍：<textarea value='无介绍' cols=100 rows=10 name='介绍'></textarea> <br><br>
+		链接：<input value='http://' type="text" name="链接"><br><br>
 		图标：<input type="file" name="图标"><br><br>
-		大图：<input type="file" name="大图"><br><br>
+		大图：<input type="file" name="大图"><br>{{ 错误 }}<br><br>
 		<input class='btn btn-primary' type="submit" value="发布">
 	</form>
 {% endblock content %}
