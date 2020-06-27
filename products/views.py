@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Product
 from django.utils import timezone
@@ -6,7 +6,13 @@ from django.utils import timezone
 
 
 def procuct_list(request):
-    return render(request, 'procuct_list.html')
+    products = Product.objects
+    return render(request, 'procuct_list.html', {"products": products})
+
+
+def detail(request, product_id):
+    product = get_object_or_404(Product, product_id)
+    return render(request, 'detail.html', {"product": product})
 
 
 @login_required
